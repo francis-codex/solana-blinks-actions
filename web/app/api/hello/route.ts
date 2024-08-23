@@ -16,8 +16,8 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {   
   
-  const postRequest: ActionPostRequest  = await request.json();
-  const userPubkey = postRequest.account;
+  const requestBody: ActionPostRequest  = await request.json();
+  const userPubkey = requestBody.account;
   console.log(userPubkey);
 
   const response : ActionPostResponse = {

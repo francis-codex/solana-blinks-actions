@@ -1,14 +1,15 @@
-import { ActionGetRequest, ActionPostRequest, ActionPostResponse, ACTIONS_CORS_HEADERS} from "@solana/actions"
+import { ActionGetResponse, ActionPostRequest, ActionPostResponse, ACTIONS_CORS_HEADERS} from "@solana/actions"
 
 export async function GET(request: Request) {    
-  const responseBody : ActionGetRequest = {
-    icons: "/sprintiq.jpg",
-    description: " This is a demo blink",
-    title: " Do Blink",
-    lable: " Click me ",
+  const responseBody : ActionGetResponse = {
+    icon: "https://pbs.twimg.com/profile_images/1800094112772689920/eF2Kjdus_400x400.jpg",
+    description: " This is a solana blinks and actions demo",
+    title: " Blinks/Actions Demo",
+    label: " Try it out ",
     error: {
-      message: "Invalid blinks",
+      message: "Blinks not fully implemented",
     },
+    type: "action"
   }  
   const response = Response.json(responseBody, {headers: ACTIONS_CORS_HEADERS}); 
   return response

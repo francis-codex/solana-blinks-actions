@@ -1,16 +1,17 @@
-import { ActionGetRequest, ActionPostRequest, ActionPostResponse} from "@solana/actions"
+import { ActionGetRequest, ActionPostRequest, ActionPostResponse, ACTIONS_CORS_HEADERS} from "@solana/actions"
 
 export async function GET(request: Request) {    
-  const response : ActionGetRequest = {
+  const responseBody : ActionGetRequest = {
     icons: "/sprintiq.jpg",
     description: " This is a demo blink",
     title: " Do Blink",
     lable: " Click me ",
     error: {
-      message: "Ivalid blinks",
+      message: "Invalid blinks",
     },
   }  
-  return Response.json({response})
+  const response = Response.json(responseBody, {headers: ACTIONS_CORS_HEADERS}); 
+  return response
 }
 
 

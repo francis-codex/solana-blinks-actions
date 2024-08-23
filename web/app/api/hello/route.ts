@@ -21,10 +21,8 @@ export async function POST(request: Request) {
   console.log(userPubkey);
 
   const response : ActionPostResponse = {
-
     transaction: "",
     message: "This is "+userPubkey,
-   
   }  
   return Response.json({response})
 }

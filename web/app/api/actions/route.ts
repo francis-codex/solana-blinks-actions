@@ -28,3 +28,8 @@ export async function POST(request: Request) {
   }  
   return Response.json({response})
 }
+
+
+export async function OPTIONS(request: Request) {
+  return new Response(null, {headers: ACTIONS_CORS_HEADERS})
+}  

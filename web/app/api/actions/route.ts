@@ -25,10 +25,20 @@ export async function POST(request: Request) {
   const userPubkey = requestBody.account;
   console.log(userPubkey);
 
+  const user = new PublicKey(userPubkey);
+
   const connection = new Connection(clusterApiUrl("mainnet-beta"))
+
+  const ix = SystemProgram.transfer({
+    fromPubkey: user,
+    toPubkey: new PublicKey('DYkYYRX3pQz1xhvA2bdpsYmByqah3YQSTSWomH4PSSHV'),
+    lamports: 1    
+  })
+
   const tx = new Transaction();
-  tx.feePayer = new PublicKey(userPubkey);
-  tx.recentBlockhash = (await connection.getLatestBlockhash({commitment: "confirmed"})).blockhash;
+  tx.add(ix)
+  tx.feePayer = user
+  tx.recentBlockhash = (await connection.getLatestBlockhash({commitment: "finalized"})).blockhash;
   const serialTX = tx.serialize({requireAllSignatures: false, verifySignatures: false}).toString("base64")
 
   const response : ActionPostResponse = {

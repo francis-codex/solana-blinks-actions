@@ -1,50 +1,16 @@
 # solana-blinks-actions
 
-This project is generated with the [create-solana-dapp](https://github.com/solana-developers/create-solana-dapp) generator.
+A minimal Solana Actions (blinks) demo: one Action endpoint that turns a URL into a signable transaction.
 
-## Getting Started
+- **`web/app/api/actions/route.ts`:** `GET` returns the Action card ("Blinks/Actions Demo", button "Try it out"). `POST` builds a `SystemProgram.transfer`, serializes it and returns it for the user's wallet to sign.
 
-### Prerequisites
+## Run
 
-- Node v18.18.0 or higher
-
-### Installation
-
-#### Clone the repo
-
-```shell
-git clone <repo-url>
-cd <repo-name>
-```
-
-#### Install Dependencies
-
-```shell
+```bash
 npm install
-```
-
-#### Start the web app
-
-```
 npm run dev
 ```
 
-## Apps
+Open `http://localhost:3000/api/actions` in [dial.to](https://dial.to) to see the blink.
 
-### web
-
-This is a React app.
-
-#### Commands
-
-Start the web app
-
-```shell
-npm run dev
-```
-
-Build the web app
-
-```shell
-npm run build
-```
+Stack: Next.js 14, `@solana/actions`, `@solana/web3.js`. Scaffolded with create-solana-dapp.
